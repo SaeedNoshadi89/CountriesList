@@ -13,4 +13,5 @@
         country and information about that country. By selecting any country, you will go to the
         details screen of that country and see more information about that country.
     </string>
+    <string name="flag">Flag</string>
 </resources>

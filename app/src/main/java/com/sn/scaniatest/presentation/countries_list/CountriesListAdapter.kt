@@ -20,7 +20,8 @@ class CountriesListAdapter constructor(private val countryClickListener: ClickLi
             fun attachView(parent: ViewGroup): ViewHolder{
                 val binding = CountryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 binding.name.isSelected = true
-                binding.population.isSelected = true
+                binding.capital.isSelected = true
+                binding.region.isSelected = true
                 return ViewHolder(binding)
             }
         }
