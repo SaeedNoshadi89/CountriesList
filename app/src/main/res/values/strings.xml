@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ScaniaTest</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="introduction_fragment_label">Introduction</string>
+    <string name="countries_list_fragment_label">Countries List</string>
+    <string name="country_detail_fragment_label">Country Detail</string>
+    <string name="next">Let\'s Go</string>
+    <string name="previous">Previous</string>
+
+    <string name="about">
+        In this application, you can see the list of countries in the world along with the flag of that
+        country and information about that country. By selecting any country, you will go to the
+        details screen of that country and see more information about that country.
+    </string>
+</resources>

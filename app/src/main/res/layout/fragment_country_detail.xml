@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="detailViewModel"
+            type="com.sn.scaniatest.presentation.country_detail.CountryDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="24.dp"
+        android:orientation="vertical">
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:setShimmerLoadingStatus="@{detailViewModel.state}"
+        shimmer:shimmer_duration="800">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_single" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:shadowRadius="8"
+        app:setDetailStatus="@{detailViewModel.state}"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/detailImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:scaleType="fitCenter"
+                    android:padding="4dp"
+                    app:imageUrl="@{detailViewModel.country.flags.png}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearance="@style/ShapeAppearanceOverlay.Avatar"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtTitleName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Country: "
+                    android:textColor="?android:textColorPrimary"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detailImage" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{detailViewModel.country.name.common}"
+                    android:textColor="?android:textColorSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtTitleName"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="@+id/txtTitleName"
+                    tools:text="Name" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRegionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Region: "
+                    android:textColor="?android:textColorPrimary"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/txtTitleName"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitleName" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRegion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{detailViewModel.country.region}"
+                    android:textColor="?android:textColorSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtRegionTitle"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="@+id/txtRegionTitle"
+                    tools:text="Region" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtPopulationTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Population: "
+                    android:textColor="?android:textColorPrimary"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/txtRegionTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/txtRegionTitle" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtPopulation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{detailViewModel.country.population.toString()}"
+                    android:textColor="?android:textColorSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtPopulationTitle"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="@+id/txtPopulationTitle"
+                    tools:text="Population" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCapitalTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Capital: "
+                    android:textColor="?android:textColorPrimary"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/txtPopulationTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/txtPopulationTitle" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCapital"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{detailViewModel.country.capital.get(0)}"
+                    android:textColor="?android:textColorSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtCapitalTitle"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="@+id/txtCapitalTitle"
+                    tools:text="Capital" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtStartOfWeekTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="StartOfWeek: "
+                    android:textColor="?android:textColorPrimary"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/txtCapitalTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCapitalTitle" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtStartOfWeek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{detailViewModel.country.startOfWeek}"
+                    android:textColor="?android:textColorSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtStartOfWeekTitle"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="@+id/txtStartOfWeekTitle"
+                    tools:text="StartOfWeek" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtTimeZoneTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="TimeZone: "
+                    android:textColor="?android:textColorPrimary"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/txtStartOfWeekTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/txtStartOfWeekTitle" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtTimeZone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{detailViewModel.country.timezones.get(0)}"
+                    android:textColor="?android:textColorSecondary"
+
+                    app:layout_constraintBottom_toBottomOf="@+id/txtTimeZoneTitle"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="@+id/txtTimeZoneTitle"
+                    tools:text="TimeZone" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="205dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

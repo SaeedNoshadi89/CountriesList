@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/IntroductionFragment">
+
+    <fragment
+        android:id="@+id/IntroductionFragment"
+        android:name="com.sn.scaniatest.presentation.introduction.IntroductionFragment"
+        android:label="@string/introduction_fragment_label"
+        tools:layout="@layout/fragment_introduction">
+        <action
+            android:id="@+id/action_IntroductionFragment_to_CountriesListFragment"
+            app:destination="@id/CountriesListFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/CountriesListFragment"
+        android:name="com.sn.scaniatest.presentation.countries_list.CountriesListFragment"
+        android:label="@string/countries_list_fragment_label"
+        tools:layout="@layout/fragment_countries_list">
+
+        <action
+            android:id="@+id/action_CountriesListFragment_to_CountryDetailFragment"
+            app:destination="@id/CountryDetailFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/fade_in" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/CountryDetailFragment"
+        android:name="com.sn.scaniatest.presentation.country_detail.CountryDetailFragment"
+        android:label="@string/country_detail_fragment_label"
+        tools:layout="@layout/fragment_country_detail">
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue='""'/>
+    </fragment>
+</navigation>
